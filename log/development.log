@@ -1,0 +1,2487 @@
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE "storage/development"."postgresql" ENCODING = 'utf8'[0m
+  [1m[35m (128.6ms)[0m  [1m[35mCREATE DATABASE "storage/development" ENCODING = 'utf8'[0m
+  [1m[35m (42.2ms)[0m  [1m[35mCREATE DATABASE "storage/test" ENCODING = 'utf8'[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2023-10-19 13:19:40.269068', '2023-10-19 13:19:40.269070') RETURNING "key"[0m
+Migrating to CreateUsers (20231019131202)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "last_name" character varying, "first_name" character varying, "date_of_birth" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231019131202') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUsers (20231019131610)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" timestamp(6)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231019131610') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-10-19 15:22:07 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 372)
+Completed 200 OK in 13ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 8936)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-19 15:32:42 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 372)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 4519)
+
+
+Started GET "/" for ::1 at 2023-10-19 15:38:38 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 372)
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 4519)
+
+
+Started GET "/" for ::1 at 2023-10-19 15:43:25 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+Started GET "/" for ::1 at 2023-10-19 15:45:37 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms | Allocations: 2645)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-10-19 15:45:37 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 695)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 3820)
+  Rendered layout layouts/application.html.erb (Duration: 547.6ms | Allocations: 102149)
+Completed 200 OK in 574ms (Views: 550.4ms | ActiveRecord: 9.3ms | Allocations: 124769)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-10-19 15:46:20 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 221)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 137)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1713)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3783)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 4707)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-10-19 15:46:28 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 126)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1011)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3061)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 3662)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/sign_in" for ::1 at 2023-10-19 15:54:09 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 695)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 3578)
+  Rendered layout layouts/application.html.erb (Duration: 20.4ms | Allocations: 36951)
+Completed 200 OK in 46ms (Views: 24.2ms | ActiveRecord: 8.6ms | Allocations: 59516)
+
+
+Started GET "/users/sign_up" for ::1 at 2023-10-19 15:54:12 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 221)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 138)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2814)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 4870)
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.0ms | Allocations: 5808)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-10-19 16:00:55 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 695)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 3578)
+  Rendered layout layouts/application.html.erb (Duration: 31.8ms | Allocations: 44244)
+Completed 200 OK in 59ms (Views: 35.8ms | ActiveRecord: 10.3ms | Allocations: 66841)
+
+
+Started GET "/" for ::1 at 2023-10-19 16:02:53 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+Completed 406 Not Acceptable in 2ms (ActiveRecord: 0.0ms | Allocations: 2843)
+
+
+  
+ActionController::MissingExactTemplate (PostsController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+actiontext (7.1.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.0.8) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.8) lib/rack/etag.rb:29:in `call'
+rack (3.0.8) lib/rack/conditional_get.rb:31:in `call'
+rack (3.0.8) lib/rack/head.rb:15:in `call'
+actionpack (7.1.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.1) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.1) lib/active_record/migration.rb:653:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.1) lib/active_support/broadcast_logger.rb:232:in `method_missing'
+railties (7.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.1) lib/rails/engine.rb:529:in `call'
+puma (6.4.0) lib/puma/configuration.rb:272:in `call'
+puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.0) lib/puma/server.rb:443:in `process_client'
+puma (6.4.0) lib/puma/server.rb:241:in `block in run'
+puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-19 16:08:43 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 3208)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 3335)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 8496)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <h1>Welcome, <%= current_user.name %>!</h1>
+    2: 
+    3: <% if current_user.posts.any? %>
+    4:   <h2>Your Posts:</h2>
+  
+app/views/posts/index.html.erb:1
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-19 16:10:02 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1606)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1733)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 6894)
+
+
+  
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+    2: 
+    3: <p>This is the index page of the app. You can customize it according to your application's requirements.</p>
+    4: 
+    5: <% if @posts.any? %>
+    6:   <h2>Latest Posts:</h2>
+    7:   <ul>
+    8:     <% @posts.each do |post| %>
+  
+app/views/posts/index.html.erb:5
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-19 16:15:43 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1606)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1733)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 6892)
+
+
+  
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+    2: 
+    3: <p>This is the index page of the app. You can customize it according to your application's requirements.</p>
+    4: 
+    5: <% if @posts.any? %>
+    6:   <h2>Latest Posts:</h2>
+    7:   <ul>
+    8:     <% @posts.each do |post| %>
+  
+app/views/posts/index.html.erb:5
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-19 16:16:28 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+Completed 406 Not Acceptable in 2ms (ActiveRecord: 0.0ms | Allocations: 2843)
+
+
+  
+ActionController::MissingExactTemplate (PostsController#index is missing a template for request formats: text/html):
+  
+actionpack (7.1.1) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.1) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.1) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.1) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.1) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+actiontext (7.1.1) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.1) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.1) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.1) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.0.8) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.8) lib/rack/etag.rb:29:in `call'
+rack (3.0.8) lib/rack/conditional_get.rb:31:in `call'
+rack (3.0.8) lib/rack/head.rb:15:in `call'
+actionpack (7.1.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.1) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.1) lib/active_record/migration.rb:653:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.1) lib/active_support/broadcast_logger.rb:232:in `method_missing'
+railties (7.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.1) lib/rails/engine.rb:529:in `call'
+puma (6.4.0) lib/puma/configuration.rb:272:in `call'
+puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.0) lib/puma/server.rb:443:in `process_client'
+puma (6.4.0) lib/puma/server.rb:241:in `block in run'
+puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-19 16:17:05 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant PostsController):
+  
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-19 16:22:53 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 372)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 4517)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-19 16:24:26 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+[Devise] Could not find devise mapping for path "/".
+This may happen for two reasons:
+
+1) You forgot to wrap your route inside the scope block. For example:
+
+  devise_scope :user do
+    get "/some/route" => "some_devise_controller"
+  end
+
+2) You are testing a Devise controller bypassing the router.
+   If so, you can explicitly tell Devise which mapping to use:
+
+   @request.env["devise.mapping"] = Devise.mappings[:user]
+
+
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 626)
+
+
+  
+AbstractController::ActionNotFound (Could not find devise mapping for path "/".
+This may happen for two reasons:
+
+1) You forgot to wrap your route inside the scope block. For example:
+
+  devise_scope :user do
+    get "/some/route" => "some_devise_controller"
+  end
+
+2) You are testing a Devise controller bypassing the router.
+   If so, you can explicitly tell Devise which mapping to use:
+
+   @request.env["devise.mapping"] = Devise.mappings[:user]
+
+):
+  
+devise (4.9.3) app/controllers/devise_controller.rb:104:in `unknown_action!'
+devise (4.9.3) app/controllers/devise_controller.rb:79:in `assert_is_devise_resource!'
+devise (4.9.3) app/controllers/devise_controller.rb:117:in `require_no_authentication'
+activesupport (7.1.1) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.1) lib/active_support/callbacks.rb:183:in `block (2 levels) in halting_and_conditional'
+actionpack (7.1.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.1.1) lib/active_support/callbacks.rb:184:in `block in halting_and_conditional'
+activesupport (7.1.1) lib/active_support/callbacks.rb:598:in `block in invoke_before'
+activesupport (7.1.1) lib/active_support/callbacks.rb:598:in `each'
+activesupport (7.1.1) lib/active_support/callbacks.rb:598:in `invoke_before'
+activesupport (7.1.1) lib/active_support/callbacks.rb:119:in `block in run_callbacks'
+activesupport (7.1.1) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.1) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.1) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.1) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.1) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.1) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.1) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.1) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.1) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.1) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.1) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.1) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.1) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.0.8) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.0.8) lib/rack/etag.rb:29:in `call'
+rack (3.0.8) lib/rack/conditional_get.rb:31:in `call'
+rack (3.0.8) lib/rack/head.rb:15:in `call'
+actionpack (7.1.1) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.1) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.1) lib/active_record/migration.rb:653:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.1) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.1) lib/active_support/broadcast_logger.rb:232:in `method_missing'
+railties (7.1.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.0.8) lib/rack/method_override.rb:28:in `call'
+rack (3.0.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.0.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.1) lib/rails/engine.rb:529:in `call'
+puma (6.4.0) lib/puma/configuration.rb:272:in `call'
+puma (6.4.0) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.0) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.0) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.0) lib/puma/server.rb:443:in `process_client'
+puma (6.4.0) lib/puma/server.rb:241:in `block in run'
+puma (6.4.0) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-10-19 17:58:44 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/chyrinetahri/.gem/ruby/3.2.0/gems/railties-7.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 372)
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4518)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-10-20 11:10:23 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 167)
+  Rendered layout layouts/application.html.erb (Duration: 38.8ms | Allocations: 42369)
+Completed 200 OK in 46ms (Views: 40.5ms | ActiveRecord: 0.0ms | Allocations: 47576)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-20 11:10:26 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.7ms | Allocations: 2091)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.4ms | Allocations: 4738)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 4831)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 8.0ms | Allocations: 23765)
+
+
+  
+ActionView::Template::Error (undefined method `new_user_password_path' for #<ActionDispatch::Routing::RoutesProxy:0x00000001099f1910 @scope=#<SessionsController:0x0000000000bba8>, @routes=#<ActionDispatch::Routing::RouteSet:0x00000001098760e0>, @helpers=#<Module:0x0000000108a83ca8>, @script_namer=nil>):
+     7: <% end %>
+     8: 
+     9: <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    10:   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    11: <% end %>
+    12: 
+    13: <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  
+app/views/devise/shared/_links.html.erb:10
+app/views/devise/sessions/new.html.erb:26
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/" for 127.0.0.1 at 2023-10-20 11:10:31 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 2470)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 2726)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-20 11:10:32 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 222)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 140)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2635)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 4931)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 6094)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-20 11:13:07 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.4ms | Allocations: 1327)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2144)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 2236)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2869)
+
+
+  
+ActionView::Template::Error (undefined method `new_user_password_path' for #<ActionDispatch::Routing::RoutesProxy:0x000000010a7c0190 @scope=#<SessionsController:0x0000000000bfb8>, @routes=#<ActionDispatch::Routing::RouteSet:0x00000001098760e0>, @helpers=#<Module:0x0000000108a83ca8>, @script_namer=nil>):
+     7: <% end %>
+     8: 
+     9: <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    10:   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    11: <% end %>
+    12: 
+    13: <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  
+app/views/devise/shared/_links.html.erb:10
+app/views/devise/sessions/new.html.erb:26
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/" for 127.0.0.1 at 2023-10-20 15:59:06 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 167)
+  Rendered layout layouts/application.html.erb (Duration: 25.1ms | Allocations: 36436)
+Completed 200 OK in 32ms (Views: 27.5ms | ActiveRecord: 0.0ms | Allocations: 41644)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-20 15:59:09 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 2087)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.9ms | Allocations: 4732)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4825)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 8.1ms | Allocations: 22687)
+
+
+  
+ActionView::Template::Error (undefined method `new_user_password_path' for #<ActionDispatch::Routing::RoutesProxy:0x0000000107e4c9a8 @scope=#<SessionsController:0x0000000000bae0>, @routes=#<ActionDispatch::Routing::RouteSet:0x00000001072b9b18>, @helpers=#<Module:0x00000001060250b0>, @script_namer=nil>):
+     7: <% end %>
+     8: 
+     9: <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    10:   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    11: <% end %>
+    12: 
+    13: <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  
+app/views/devise/shared/_links.html.erb:10
+app/views/devise/sessions/new.html.erb:26
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/" for 127.0.0.1 at 2023-10-20 15:59:24 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2455)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 2709)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-20 16:01:55 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 222)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 140)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2635)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 4931)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 6077)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-20 16:02:04 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 1326)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2143)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 2235)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2841)
+
+
+  
+ActionView::Template::Error (undefined method `new_user_password_path' for #<ActionDispatch::Routing::RoutesProxy:0x000000011047a9d0 @scope=#<SessionsController:0x0000000000bf40>, @routes=#<ActionDispatch::Routing::RouteSet:0x00000001072b9b18>, @helpers=#<Module:0x00000001060250b0>, @script_namer=nil>):
+     7: <% end %>
+     8: 
+     9: <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    10:   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    11: <% end %>
+    12: 
+    13: <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  
+app/views/devise/shared/_links.html.erb:10
+app/views/devise/sessions/new.html.erb:26
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/" for 127.0.0.1 at 2023-10-23 09:35:26 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 167)
+  Rendered layout layouts/application.html.erb (Duration: 30.5ms | Allocations: 35331)
+Completed 200 OK in 39ms (Views: 33.1ms | ActiveRecord: 0.0ms | Allocations: 40539)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-23 09:35:29 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 230)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 576)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 4368)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 6665)
+Completed 200 OK in 66ms (Views: 14.0ms | ActiveRecord: 19.5ms | Allocations: 25365)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 09:35:31 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.8ms | Allocations: 1652)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.3ms | Allocations: 3019)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 3111)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 4483)
+
+
+  
+ActionView::Template::Error (undefined method `new_user_password_path' for #<ActionDispatch::Routing::RoutesProxy:0x0000000108848088 @scope=#<SessionsController:0x0000000000bba8>, @routes=#<ActionDispatch::Routing::RouteSet:0x0000000107b79ed8>, @helpers=#<Module:0x00000001068e6f50>, @script_namer=nil>):
+     7: <% end %>
+     8: 
+     9: <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    10:   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    11: <% end %>
+    12: 
+    13: <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  
+app/views/devise/shared/_links.html.erb:10
+app/views/devise/sessions/new.html.erb:26
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/" for 127.0.0.1 at 2023-10-23 09:38:10 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2464)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 2717)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 09:44:50 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 1325)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2142)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2234)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 2857)
+
+
+  
+ActionView::Template::Error (undefined method `new_user_password_path' for #<ActionDispatch::Routing::RoutesProxy:0x0000000108b80160 @scope=#<SessionsController:0x0000000000bf68>, @routes=#<ActionDispatch::Routing::RouteSet:0x0000000107b79ed8>, @helpers=#<Module:0x00000001068e6f50>, @script_namer=nil>):
+     7: <% end %>
+     8: 
+     9: <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    10:   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    11: <% end %>
+    12: 
+    13: <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  
+app/views/devise/shared/_links.html.erb:10
+app/views/devise/sessions/new.html.erb:26
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/" for 127.0.0.1 at 2023-10-23 09:57:18 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 167)
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 36334)
+Completed 200 OK in 29ms (Views: 24.9ms | ActiveRecord: 0.0ms | Allocations: 41542)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 09:57:20 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 2427)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 2679)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-23 09:57:23 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 230)
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 576)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 8.0ms | Allocations: 4368)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 6665)
+Completed 200 OK in 51ms (Views: 14.1ms | ActiveRecord: 7.2ms | Allocations: 24291)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 09:57:25 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 242)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1607)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 3817)
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 0.0ms | Allocations: 5198)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-23 09:57:29 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 126)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1511)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3743)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 4357)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 09:57:31 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 3247)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 3903)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 09:57:36 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3247)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 3900)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-23 10:26:17 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 213)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 561)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 2842)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 16523)
+Completed 200 OK in 24ms (Views: 9.6ms | ActiveRecord: 6.7ms | Allocations: 24965)
+
+
+Started POST "/accounts" for 127.0.0.1 at 2023-10-23 10:27:25 +0200
+Processing by RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"Tahri", "first_name"=>"Chyrine", "date_of_birth"=>"1995-02-21", "email"=>"chyrine@capsens.eu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (92.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "chyrine@capsens.eu"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("last_name", "first_name", "date_of_birth", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["last_name", "Tahri"], ["first_name", "Chyrine"], ["date_of_birth", "1995-02-21"], ["created_at", "2023-10-23 08:27:25.880461"], ["updated_at", "2023-10-23 08:27:25.880461"], ["email", "chyrine@capsens.eu"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 633ms (ActiveRecord: 95.9ms | Allocations: 13880)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 10:27:25 +0200
+Processing by PagesController#authentication as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 3701)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 1.4ms | Allocations: 4456)
+
+
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-23 10:27:34 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/accounts/sign_out"):
+  
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-23 10:37:00 +0200
+  
+ArgumentError (Invalid route name, already in use: 'destroy_user_session' 
+You may have defined two routes with the same name using the `:as` option, or you may be overriding a route already defined by a resource with the same naming. For the latter, you can restrict the routes created with `resources` as explained here: 
+https://guides.rubyonrails.org/routing.html#restricting-the-routes-created):
+  
+config/routes.rb:10:in `block (2 levels) in <main>'
+config/routes.rb:9:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-23 10:37:47 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/accounts/sign_out"):
+  
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-23 10:38:07 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/accounts/sign_out"):
+  
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-23 10:38:41 +0200
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 19ms (ActiveRecord: 8.4ms | Allocations: 9833)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 10:38:41 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 84)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 14065)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 15035)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 10:38:44 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 664)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1950)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4243)
+Completed 200 OK in 16ms (Views: 13.4ms | ActiveRecord: 0.0ms | Allocations: 5616)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 10:38:52 +0200
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"chyrine@capsens.eu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "chyrine@capsens.eu"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 272ms (ActiveRecord: 0.4ms | Allocations: 2618)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 10:38:53 +0200
+Processing by PagesController#authentication as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 3031)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 3327)
+
+
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-23 10:38:55 +0200
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 8ms (ActiveRecord: 0.6ms | Allocations: 1744)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 10:38:55 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2428)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 2677)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 10:38:57 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.8ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 3271)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.0ms | Allocations: 3930)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 10:39:07 +0200
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"chyrine@capsens.eu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "chyrine@capsens.eu"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Completed 401 Unauthorized in 272ms (ActiveRecord: 0.6ms | Allocations: 1078)
+
+
+Processing by SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"chyrine@capsens.eu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1039)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 3233)
+Completed 200 OK in 244ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 3776)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 10:39:10 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2431)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2680)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 10:39:17 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 3247)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 3886)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-23 10:39:34 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 211)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 136)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2267)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 4481)
+Completed 200 OK in 12ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 5599)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 10:39:35 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 3247)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 3904)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 11:14:05 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 26.4ms | Allocations: 36469)
+Completed 200 OK in 33ms (Views: 28.7ms | ActiveRecord: 0.0ms | Allocations: 41697)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 11:14:19 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 2424)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 2678)
+
+
+Started GET "/letter_opener" for 127.0.0.1 at 2023-10-23 11:14:23 +0200
+Processing by LetterOpenerWeb::LettersController#index as HTML
+  Rendering layout /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/letters.html.erb
+  Rendering /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters
+  Rendered collection of /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/_item.html.erb [0 times] (Duration: 0.0ms | Allocations: 27)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters (Duration: 1.6ms | Allocations: 800)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_icon.html.erb (Duration: 0.4ms | Allocations: 96)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_bootstrap.html.erb (Duration: 5.2ms | Allocations: 632)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_letters.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/_styles.html.erb (Duration: 9.0ms | Allocations: 1447)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/js/_jquery.html.erb (Duration: 3.5ms | Allocations: 1911)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/js/_favcount.html.erb (Duration: 0.4ms | Allocations: 315)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/_javascripts.html.erb (Duration: 5.6ms | Allocations: 2811)
+  Rendered layout /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/letters.html.erb (Duration: 18.2ms | Allocations: 5916)
+Completed 200 OK in 25ms (Views: 20.1ms | ActiveRecord: 0.0ms | Allocations: 7524)
+
+
+Started GET "/letter_opener/" for 127.0.0.1 at 2023-10-23 11:14:25 +0200
+Processing by LetterOpenerWeb::LettersController#index as HTML
+  Rendering layout /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/letters.html.erb
+  Rendering /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters
+  Rendered collection of /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/_item.html.erb [0 times] (Duration: 0.0ms | Allocations: 9)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters (Duration: 0.8ms | Allocations: 220)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_icon.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_bootstrap.html.erb (Duration: 0.1ms | Allocations: 7)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_letters.html.erb (Duration: 0.0ms | Allocations: 7)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/_styles.html.erb (Duration: 0.5ms | Allocations: 194)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/js/_jquery.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/js/_favcount.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/_javascripts.html.erb (Duration: 0.6ms | Allocations: 137)
+  Rendered layout /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/letters.html.erb (Duration: 3.4ms | Allocations: 1005)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 1329)
+
+
+Started POST "/letter_opener/clear" for 127.0.0.1 at 2023-10-23 11:14:29 +0200
+Processing by LetterOpenerWeb::LettersController#clear as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://127.0.0.1:3000/letter_opener/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 1614)
+
+
+Started GET "/letter_opener/" for 127.0.0.1 at 2023-10-23 11:14:29 +0200
+Processing by LetterOpenerWeb::LettersController#index as HTML
+  Rendering layout /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/letters.html.erb
+  Rendering /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters
+  Rendered collection of /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/_item.html.erb [0 times] (Duration: 0.0ms | Allocations: 9)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/letter_opener_web/letters/index.html.erb within layouts/letter_opener_web/letters (Duration: 0.4ms | Allocations: 220)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_icon.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_bootstrap.html.erb (Duration: 0.1ms | Allocations: 7)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/styles/_letters.html.erb (Duration: 0.0ms | Allocations: 7)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/_styles.html.erb (Duration: 0.3ms | Allocations: 194)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/js/_jquery.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/js/_favcount.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/_javascripts.html.erb (Duration: 0.2ms | Allocations: 137)
+  Rendered layout /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/letter_opener_web-2.0.0/app/views/layouts/letter_opener_web/letters.html.erb (Duration: 1.9ms | Allocations: 969)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 1210)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 12:21:31 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 30.0ms | Allocations: 36441)
+Completed 200 OK in 37ms (Views: 32.4ms | ActiveRecord: 0.0ms | Allocations: 41667)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 12:21:34 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 686)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3339)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 5632)
+Completed 200 OK in 41ms (Views: 12.1ms | ActiveRecord: 7.8ms | Allocations: 23599)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 12:21:47 +0200
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"chyrine@capsens.eu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "chyrine@capsens.eu"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 273ms (ActiveRecord: 1.5ms | Allocations: 6543)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 12:21:48 +0200
+Processing by PagesController#authentication as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 3069)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 3367)
+
+
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-23 12:21:51 +0200
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 11ms (ActiveRecord: 0.7ms | Allocations: 2479)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-23 12:21:51 +0200
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2446)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 2698)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-23 12:21:52 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 221)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 137)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2633)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 4847)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 0.0ms | Allocations: 6066)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-23 12:22:06 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 3271)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 3943)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-25 12:31:10 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 35282)
+Completed 200 OK in 139ms (Views: 29.9ms | ActiveRecord: 0.0ms | Allocations: 319382)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-25 12:31:12 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 683)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 3446)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 5739)
+Completed 200 OK in 58ms (Views: 12.6ms | ActiveRecord: 18.5ms | Allocations: 24739)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-25 12:31:24 +0200
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"chyrine@capsens.eu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "chyrine@capsens.eu"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Completed 401 Unauthorized in 271ms (ActiveRecord: 2.1ms | Allocations: 4709)
+
+
+Processing by SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"chyrine@capsens.eu", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1042)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 3216)
+Completed 200 OK in 244ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 3825)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-25 12:31:31 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3247)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 3906)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-25 12:31:35 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 221)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 137)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2633)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 4847)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.0ms | Allocations: 6080)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-25 12:31:37 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 226)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 3271)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 3958)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-30 11:01:47 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | Allocations: 35207)
+Completed 200 OK in 160ms (Views: 28.1ms | ActiveRecord: 0.0ms | Allocations: 319604)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-30 11:01:50 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.9ms | Allocations: 684)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3447)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 5740)
+Completed 200 OK in 62ms (Views: 11.8ms | ActiveRecord: 24.4ms | Allocations: 24607)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 11:01:52 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 221)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 138)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1713)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 3927)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 5019)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-30 11:01:53 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3247)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 3892)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-30 11:02:09 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2467)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 2723)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 11:02:12 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1011)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3231)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 3845)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-30 11:02:19 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3247)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 3910)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 11:02:20 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1011)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3219)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 3808)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-30 11:02:24 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.8ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 3247)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 3886)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 11:02:25 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1011)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3219)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 3809)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 11:03:11 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1015)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 3223)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 3704)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 11:03:11 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.1ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1014)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 3222)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 3703)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-30 11:04:04 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.4ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1043)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 3255)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.0ms | Allocations: 3903)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-30 12:02:04 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 36457)
+Completed 200 OK in 161ms (Views: 25.6ms | ActiveRecord: 0.0ms | Allocations: 320853)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 12:02:07 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 230)
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 577)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 3567)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 5864)
+Completed 200 OK in 35ms (Views: 10.8ms | ActiveRecord: 5.6ms | Allocations: 23452)
+
+
+Started POST "/accounts" for 127.0.0.1 at 2023-10-30 12:02:32 +0100
+Processing by Users::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"John-doe@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "john-doe@gmail.com"], ["LIMIT", 1]]
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("last_name", "first_name", "date_of_birth", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["last_name", nil], ["first_name", nil], ["date_of_birth", nil], ["created_at", "2023-10-30 11:02:33.087741"], ["updated_at", "2023-10-30 11:02:33.087741"], ["email", "john-doe@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+DEPRECATION WARNING: Using preview_path= option is deprecated and will be removed in Rails 7.2. Please use preview_paths= instead. (called from require at /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32)
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 332)
+UserMailer#welcome_email: processed outbound mail in 3.5ms
+Delivered mail 653f8d491ac0e_423b40ec924d@chyrines-air.home.mail (548.2ms)
+Date: Mon, 30 Oct 2023 12:02:33 +0100
+From: from@example.com
+To: john-doe@gmail.com
+Message-ID: <653f8d491ac0e_423b40ec924d@chyrines-air.home.mail>
+Subject: Welcome to our app!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome to our app, !</h1>
+<p>Thank you for joining us.</p>
+  </body>
+</html>
+
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 892ms (ActiveRecord: 6.3ms | Allocations: 33217)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-30 12:02:33 +0100
+Processing by PagesController#authentication as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2477)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 2774)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-30 17:34:34 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 21.5ms | Allocations: 36540)
+Completed 200 OK in 124ms (Views: 23.1ms | ActiveRecord: 0.0ms | Allocations: 320634)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-30 17:34:37 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.7ms | Allocations: 684)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 3446)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 5739)
+Completed 200 OK in 41ms (Views: 11.0ms | ActiveRecord: 8.4ms | Allocations: 23579)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 17:34:39 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1790)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1882)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2971)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <h2>Sign up</h2>
+    2: 
+    3: <%= form_for(@resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    4:   <%= render "users/shared/error_messages", resource: resource %>
+    5: 
+    6:   <div class="field">
+  
+app/views/users/registrations/new.html.erb:3
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-30 17:35:07 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.4ms | Allocations: 665)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1963)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 15662)
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 4.7ms | Allocations: 22154)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-30 17:35:09 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 221)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 138)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1701)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3915)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 4978)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 09:29:23 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 29.8ms | Allocations: 41629)
+Completed 200 OK in 158ms (Views: 32.0ms | ActiveRecord: 0.0ms | Allocations: 326025)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 09:40:03 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 4586)
+Completed 200 OK in 111ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 289073)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 09:40:05 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 230)
+  Rendered users/shared/_links.html.erb (Duration: 0.7ms | Allocations: 577)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 3566)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 4165)
+Completed 200 OK in 53ms (Views: 10.9ms | ActiveRecord: 19.2ms | Allocations: 21743)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 09:40:06 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 243)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1609)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2121)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 3452)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 09:47:15 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 637)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 888)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 09:50:04 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2816)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4715)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 09:50:50 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 213)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 562)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2234)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 4702)
+Completed 200 OK in 21ms (Views: 4.7ms | ActiveRecord: 8.6ms | Allocations: 13270)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 09:50:52 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 241)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1396)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1908)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 3052)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 09:50:55 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.3ms | Allocations: 81)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 945)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 1671)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 09:50:56 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.5ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1012)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1522)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 2118)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 09:55:39 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 84)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2855)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 4757)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 09:56:00 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 4638)
+Completed 200 OK in 114ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 289126)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 09:56:01 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 230)
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 577)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 3566)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4209)
+Completed 200 OK in 41ms (Views: 9.4ms | ActiveRecord: 9.4ms | Allocations: 21796)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 09:56:02 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 243)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1609)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2165)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 3484)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:00:17 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 4635)
+Completed 200 OK in 91ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 289121)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:00:19 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 230)
+  Rendered users/shared/_links.html.erb (Duration: 0.7ms | Allocations: 577)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 3566)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4209)
+Completed 200 OK in 42ms (Views: 9.0ms | ActiveRecord: 10.9ms | Allocations: 21808)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:00:20 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.5ms | Allocations: 243)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1609)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2165)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 3487)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:00:21 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1011)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1565)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2154)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:04:13 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 4585)
+Completed 200 OK in 82ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 289071)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:33:50 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 171)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 4591)
+Completed 200 OK in 123ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 289077)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:33:51 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 230)
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 577)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 3566)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 4165)
+Completed 200 OK in 40ms (Views: 9.8ms | ActiveRecord: 7.9ms | Allocations: 21746)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:34:23 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2813)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4714)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:34:25 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 213)
+  Rendered users/shared/_links.html.erb (Duration: 0.9ms | Allocations: 562)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3149)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 3748)
+Completed 200 OK in 21ms (Views: 10.9ms | ActiveRecord: 3.3ms | Allocations: 9659)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:34:28 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 243)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1608)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2120)
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 0.0ms | Allocations: 3427)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:37:57 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 86)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1845)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 3774)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjetFormationRails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+     <header>
+      <nav>
+        <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path %>
+          <%= link_to "Register", new_user_registration_path %>
+        <% end %>
+      </nav>
+    </header>  
+
+    <main>
+      <% if user_signed_in? %>
+        <h1> Bienvenu <%= current_user.first_name %> </h1>
+      <% else%>
+        <h1> Bienvenu </h1>
+      </main>
+    <%= yield %>
+  </body>
+</html>
+
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:        <title>ProjetFormationRails</title>
+5:        <meta name="viewport" content="width=device-width,initial-scale=1">
+6:        <%= csrf_meta_tags %>
+7:        <%= csp_meta_tag %>
+8:    
+9:        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+10:        <%= javascript_importmap_tags %>
+11:      </head>
+12:    
+13:      <body>
+14:         <header>
+15:          <nav>
+16:            <% if user_signed_in? %>
+17:              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+18:            <% else %>
+19:              <%= link_to "Login", new_user_session_path %>
+20:              <%= link_to "Register", new_user_registration_path %>
+21:            <% end %>
+22:          </nav>
+23:        </header>  
+24:    
+25:        <main>
+26:          <% if user_signed_in? %>
+27:            <h1> Bienvenu <%= current_user.first_name %> </h1>
+28:          <% else%>
+29:            <h1> Bienvenu </h1>
+30:          </main>
+31:        <%= yield %>
+32:      </body>
+33:    </html>
+  
+app/views/layouts/application.html.erb:36: syntax error, unexpected end-of-input
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:38:42 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2927)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4827)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:38:46 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.0ms | Allocations: 665)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1959)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2576)
+Completed 200 OK in 19ms (Views: 8.3ms | ActiveRecord: 3.4ms | Allocations: 8596)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:38:53 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 211)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 137)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2268)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2806)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 3874)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:48:50 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2920)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 4821)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:48:53 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.0ms | Allocations: 665)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1958)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2585)
+Completed 200 OK in 32ms (Views: 7.6ms | ActiveRecord: 6.5ms | Allocations: 10747)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:48:56 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 211)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 137)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2267)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 2813)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 3908)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:48:58 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.8ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1044)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 1580)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 2226)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:53:46 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2933)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 4834)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:53:49 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 213)
+  Rendered users/shared/_links.html.erb (Duration: 0.8ms | Allocations: 562)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2838)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 3469)
+Completed 200 OK in 23ms (Views: 8.4ms | ActiveRecord: 7.7ms | Allocations: 9423)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:55:19 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2921)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 4822)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:55:23 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 213)
+  Rendered users/shared/_links.html.erb (Duration: 0.9ms | Allocations: 562)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2835)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 3466)
+Completed 200 OK in 21ms (Views: 9.7ms | ActiveRecord: 3.4ms | Allocations: 9336)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:55:27 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 241)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1397)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1939)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 3110)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:55:51 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 2918)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 4819)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:55:52 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.0ms | Allocations: 665)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1957)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2584)
+Completed 200 OK in 21ms (Views: 8.4ms | ActiveRecord: 4.9ms | Allocations: 8598)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:55:55 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 211)
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 137)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2268)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2814)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 3909)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:58:42 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | Allocations: 1529)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 3464)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjetFormationRails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-brand" %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "navbar-brand" %>
+          <%= link_to "Register", new_user_registration_path, class: "navbar-brand" %>
+        <% end %>
+      </div>
+    </nav>
+
+    <main>
+      <% if user_signed_in? %>
+        <h1> Bienvenu <%= current_user.first_name %> <%= current_user.last_name %> </h1>
+        <div class="dashboard">
+          <%= link_to "Edit Profile", edit_user_registration_path %
+        </div>
+      <% else%>
+        <h1> Bienvenu </h1>
+      <% end %>
+    </main>
+
+    <%= yield %>
+  </body>
+</html>
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:        <title>ProjetFormationRails</title>
+5:        <meta name="viewport" content="width=device-width,initial-scale=1">
+6:        <%= csrf_meta_tags %>
+7:        <%= csp_meta_tag %>
+8:    
+9:        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+10:        <%= javascript_importmap_tags %>
+11:      </head>
+12:    
+13:      <body>
+14:        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+15:          <div class="container-fluid">
+16:            <% if user_signed_in? %>
+17:              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-brand" %>
+18:            <% else %>
+19:              <%= link_to "Login", new_user_session_path, class: "navbar-brand" %>
+20:              <%= link_to "Register", new_user_registration_path, class: "navbar-brand" %>
+21:            <% end %>
+22:          </div>
+23:        </nav>
+24:    
+25:        <main>
+26:          <% if user_signed_in? %>
+27:            <h1> Bienvenu <%= current_user.first_name %> <%= current_user.last_name %> </h1>
+28:            <div class="dashboard">
+29:              <%= link_to "Edit Profile", edit_user_registration_path %
+30:            </div>
+31:          <% else%>
+32:            <h1> Bienvenu </h1>
+33:          <% end %>
+34:        </main>
+35:    
+36:        <%= yield %>
+37:      </body>
+38:    </html>
+  
+app/views/layouts/application.html.erb:30: syntax error, unexpected '<'
+app/views/layouts/application.html.erb:32: unknown regexp option - h
+app/views/layouts/application.html.erb:37: unknown regexp options - bdy
+app/views/layouts/application.html.erb:40: unterminated regexp meets end of file
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:59:05 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2968)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 4866)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:59:07 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 1.1ms | Allocations: 665)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1959)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2586)
+Completed 200 OK in 21ms (Views: 8.4ms | ActiveRecord: 4.1ms | Allocations: 8635)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:59:24 +0100
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"john.doe@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "john.doe@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 14ms (ActiveRecord: 2.3ms | Allocations: 4564)
+
+
+Processing by Users::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"john.doe@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.2ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1042)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1543)
+Completed 200 OK in 294ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 2618)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 10:59:26 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 211)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 137)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2266)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2812)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 3893)
+
+
+Started POST "/accounts" for 127.0.0.1 at 2023-10-31 10:59:44 +0100
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"Doe", "first_name"=>"John", "date_of_birth"=>"1990-01-01", "email"=>"john.doe@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "john.doe@example.com"], ["LIMIT", 1]]
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+  [1m[36mUser Create (5.4ms)[0m  [1m[32mINSERT INTO "users" ("last_name", "first_name", "date_of_birth", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["last_name", "Doe"], ["first_name", "John"], ["date_of_birth", "1990-01-01"], ["created_at", "2023-10-31 09:59:45.026359"], ["updated_at", "2023-10-31 09:59:45.026359"], ["email", "john.doe@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/transactions/users/create_transaction.rb:14:in `create'
+DEPRECATION WARNING: Using preview_path= option is deprecated and will be removed in Rails 7.2. Please use preview_paths= instead. (called from require at /Users/chyrinetahri/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32)
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 116)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 333)
+UserMailer#welcome_email: processed outbound mail in 3.3ms
+Delivered mail 6540d011cf0e_15e74150760f5@chyrines-air.home.mail (60.8ms)
+Date: Tue, 31 Oct 2023 10:59:45 +0100
+From: from@example.com
+To: john.doe@example.com
+Message-ID: <6540d011cf0e_15e74150760f5@chyrines-air.home.mail>
+Subject: Welcome to our app!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome to our app, John!</h1>
+<p>Thank you for joining us.</p>
+  </body>
+</html>
+
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 364ms (ActiveRecord: 7.6ms | Allocations: 28788)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 10:59:45 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 775)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 1025)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:59:58 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.9ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1048)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1584)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2256)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 10:59:59 +0100
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"john.doe@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "john.doe@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 279ms (ActiveRecord: 0.5ms | Allocations: 3105)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 11:00:00 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1420)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1665)
+
+
+Started GET "/accounts/edit" for 127.0.0.1 at 2023-10-31 11:00:07 +0100
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/registrations/edit.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1750)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2248)
+Completed 200 OK in 10ms (Views: 6.6ms | ActiveRecord: 0.4ms | Allocations: 4006)
+
+
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-31 11:00:18 +0100
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 6ms (ActiveRecord: 0.5ms | Allocations: 2304)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 11:00:18 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 772)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 1017)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 11:00:21 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1511)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2051)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 2668)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to DeviseCreateAdminUsers (20231031100909)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.5ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231031100909') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveAdminComments (20231031100910)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_resource" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_author" ON "active_admin_comments" ("author_type", "author_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231031100910') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mAdminUser Create (1.0ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "admin@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-10-31 10:09:39.029337"], ["updated_at", "2023-10-31 10:09:39.029337"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 11:09:46 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 238)
+  Rendered users/shared/_links.html.erb (Duration: 0.5ms | Allocations: 582)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 4580)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 7455)
+Completed 200 OK in 37ms (Views: 11.9ms | ActiveRecord: 7.8ms | Allocations: 28941)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 11:09:47 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.5ms | Allocations: 243)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1611)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2153)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 3604)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 11:09:55 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.4ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 984)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 1768)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 11:09:58 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.6ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1045)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1581)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 2258)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 11:10:00 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered users/shared/_links.html.erb (Duration: 0.3ms | Allocations: 126)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1514)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2054)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 2677)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 11:10:01 +0100
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (Duration: 0.4ms | Allocations: 226)
+  Rendered users/sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1044)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 1580)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 2259)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 11:10:06 +0100
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"john.doe@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "john.doe@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 277ms (ActiveRecord: 1.0ms | Allocations: 7165)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 11:10:06 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 1404)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1659)
+
+
+Started POST "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 11:10:46 +0100
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms | Allocations: 1577)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 11:10:46 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1376)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 1631)
+
+
+Started GET "/accounts/sign_in" for 127.0.0.1 at 2023-10-31 11:57:43 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 29ms (ActiveRecord: 9.2ms | Allocations: 21806)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 11:57:43 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.2ms | Allocations: 172)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3986)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 0.5ms | Allocations: 7632)
+
+
+Started GET "/accounts/sign_out" for 127.0.0.1 at 2023-10-31 11:57:45 +0100
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 7ms (ActiveRecord: 0.6ms | Allocations: 2626)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-31 11:57:45 +0100
+Processing by PagesController#authentication as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/authentication.html.erb within layouts/application
+  Rendered pages/authentication.html.erb within layouts/application (Duration: 0.0ms | Allocations: 5)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 859)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 1115)
+
+
+Started GET "/accounts/sign_up" for 127.0.0.1 at 2023-10-31 11:57:50 +0100
+Processing by Users::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 230)
+  Rendered users/shared/_links.html.erb (Duration: 0.7ms | Allocations: 576)
+  Rendered users/registrations/new.html.erb within layouts/application (Duration: 9.3ms | Allocations: 4257)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 4888)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.0ms | Allocations: 6464)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "admin_@example.com"], ["LIMIT", 1]]
+  [1m[36mAdminUser Create (0.3ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "admin_@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-10-31 11:24:26.505066"], ["updated_at", "2023-10-31 11:24:26.505066"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddAdminToUsers (20231031112631)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231031112631') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8201092966875010755)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "admin_@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = $1 LIMIT $2[0m  [["email", "administrator@example.com"], ["LIMIT", 1]]
+  [1m[36mAdminUser Create (0.4ms)[0m  [1m[32mINSERT INTO "admin_users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "administrator@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-10-31 11:27:24.491649"], ["updated_at", "2023-10-31 11:27:24.491649"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "john@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jane@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
